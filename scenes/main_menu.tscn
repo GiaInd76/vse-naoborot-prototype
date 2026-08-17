@@ -1,0 +1,198 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
+
+[sub_resource type="SystemFont" id="SystemFont_menu"]
+font_names = PackedStringArray("Chalkboard SE", "Marker Felt", "Comic Sans MS")
+font_weight = 600
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_menu")
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.055, 0.12, 0.075, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="Center"]
+custom_minimum_size = Vector2(560, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Center/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.96, 0.82, 1)
+theme_override_font_sizes/font_size = 62
+text = "Новый проект"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Center/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.72, 0.6, 1)
+theme_override_font_sizes/font_size = 22
+text = "Технический прототип"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/Menu"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="Center/Menu"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Начать новую игру"
+
+[node name="Continue" type="Button" parent="Center/Menu"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+tooltip_text = "Сохранений пока нет"
+disabled = true
+theme_override_font_sizes/font_size = 26
+text = "Продолжить с последнего места"
+
+[node name="ChooseSave" type="Button" parent="Center/Menu"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+tooltip_text = "Система сохранений появится позднее"
+disabled = true
+theme_override_font_sizes/font_size = 26
+text = "Выбрать сохранение"
+
+[node name="Settings" type="Button" parent="Center/Menu"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Настройки"
+
+[node name="About" type="Button" parent="Center/Menu"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Об игре"
+
+[node name="Quit" type="Button" parent="Center/Menu"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Выйти"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(520, 260)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -130.0
+offset_right = 260.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="Content" type="VBoxContainer" parent="SettingsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="SettingsPanel/Margin/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Настройки"
+horizontal_alignment = 1
+
+[node name="FullscreenToggle" type="CheckButton" parent="SettingsPanel/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Полноэкранный режим"
+
+[node name="Close" type="Button" parent="SettingsPanel/Margin/Content"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+text = "Назад"
+
+[node name="AboutPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(620, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -160.0
+offset_right = 310.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="AboutPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="Content" type="VBoxContainer" parent="AboutPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="AboutPanel/Margin/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Об игре"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AboutPanel/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 19
+text = "Сюжетное 2D-приключение с видом сверху.\n\nСейчас это первый технический прототип:\nбольшая карта, движение персонажа, границы и камера."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Close" type="Button" parent="AboutPanel/Margin/Content"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+text = "Назад"
+
+[connection signal="pressed" from="Center/Menu/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Center/Menu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Center/Menu/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="Center/Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="SettingsPanel/Margin/Content/FullscreenToggle" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="SettingsPanel/Margin/Content/Close" to="." method="_on_close_panel_pressed"]
+[connection signal="pressed" from="AboutPanel/Margin/Content/Close" to="." method="_on_close_panel_pressed"]

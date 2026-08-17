@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://crupimldc60t3"]
+
+[ext_resource type="Script" uid="uid://cs4ph8frprw4l" path="res://scripts/world.gd" id="1_world"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/movable_stone.tscn" id="3_stone"]
+[ext_resource type="Script" path="res://scripts/nature_half.gd" id="4_nature"]
+
+[sub_resource type="RectangleShape2D" id="Rectangle_top"]
+size = Vector2(6000, 64)
+
+[sub_resource type="RectangleShape2D" id="Rectangle_bottom"]
+size = Vector2(6000, 64)
+
+[sub_resource type="RectangleShape2D" id="Rectangle_side"]
+size = Vector2(64, 4000)
+
+[sub_resource type="RectangleShape2D" id="Rectangle_right"]
+size = Vector2(64, 4000)
+
+[sub_resource type="CircleShape2D" id="Circle_rock"]
+radius = 72.0
+
+[sub_resource type="RectangleShape2D" id="Rectangle_log"]
+size = Vector2(250, 70)
+
+[node name="World" type="Node2D" unique_id=1159297123]
+
+[node name="Ground" type="Node2D" parent="." unique_id=243595844]
+script = ExtResource("1_world")
+
+[node name="Boundaries" type="Node2D" parent="." unique_id=1406305350]
+
+[node name="Top" type="StaticBody2D" parent="Boundaries" unique_id=105126730]
+position = Vector2(3000, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Top" unique_id=1082866709]
+shape = SubResource("Rectangle_top")
+
+[node name="Bottom" type="StaticBody2D" parent="Boundaries" unique_id=1231270610]
+position = Vector2(3000, 4032)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Bottom" unique_id=675473830]
+shape = SubResource("Rectangle_bottom")
+
+[node name="Left" type="StaticBody2D" parent="Boundaries" unique_id=126530349]
+position = Vector2(-32, 2000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Left" unique_id=1968017411]
+shape = SubResource("Rectangle_side")
+
+[node name="Right" type="StaticBody2D" parent="Boundaries" unique_id=1791228545]
+position = Vector2(6032, 2000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Right" unique_id=1652186629]
+shape = SubResource("Rectangle_right")
+
+[node name="NatureHalf" type="Node2D" parent="."]
+script = ExtResource("4_nature")
+
+[node name="Player" parent="." unique_id=1329671938 instance=ExtResource("2_player")]
+position = Vector2(3000, 2240)
+
+[node name="Obstacles" type="Node2D" parent="." unique_id=307098646]
+
+[node name="LargeRockLeft" type="StaticBody2D" parent="Obstacles" unique_id=1452857568]
+position = Vector2(2720, 1920)
+collision_layer = 2
+
+[node name="Visual" type="Polygon2D" parent="Obstacles/LargeRockLeft" unique_id=112217987]
+color = Color(0.35, 0.38, 0.36, 1)
+polygon = PackedVector2Array(-76, -24, -48, -68, 12, -82, 66, -52, 82, 8, 54, 63, -8, 78, -67, 45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/LargeRockLeft" unique_id=1465636069]
+shape = SubResource("Circle_rock")
+
+[node name="LargeRockRight" type="StaticBody2D" parent="Obstacles" unique_id=1071616532]
+position = Vector2(3290, 1850)
+collision_layer = 2
+
+[node name="Visual" type="Polygon2D" parent="Obstacles/LargeRockRight" unique_id=1979656450]
+color = Color(0.39, 0.41, 0.39, 1)
+polygon = PackedVector2Array(-76, -24, -48, -68, 12, -82, 66, -52, 82, 8, 54, 63, -8, 78, -67, 45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/LargeRockRight" unique_id=1959735614]
+shape = SubResource("Circle_rock")
+
+[node name="Log" type="StaticBody2D" parent="Obstacles" unique_id=1582372306]
+position = Vector2(3010, 1740)
+rotation = 0.22
+collision_layer = 2
+
+[node name="Visual" type="Polygon2D" parent="Obstacles/Log" unique_id=972413286]
+color = Color(0.39, 0.22, 0.1, 1)
+polygon = PackedVector2Array(-130, -35, 130, -35, 138, -20, 138, 20, 130, 35, -130, 35, -138, 20, -138, -20)
+
+[node name="RingLeft" type="Polygon2D" parent="Obstacles/Log" unique_id=2013596416]
+color = Color(0.58, 0.35, 0.17, 1)
+polygon = PackedVector2Array(-138, -20, -130, -35, -115, -25, -111, 0, -115, 25, -130, 35, -138, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Log" unique_id=437800609]
+shape = SubResource("Rectangle_log")
+
+[node name="SmallStone1" parent="Obstacles" unique_id=1075518829 instance=ExtResource("3_stone")]
+position = Vector2(2860, 2050)
+
+[node name="SmallStone2" parent="Obstacles" unique_id=949205607 instance=ExtResource("3_stone")]
+position = Vector2(2980, 1980)
+
+[node name="SmallStone3" parent="Obstacles" unique_id=1036098569 instance=ExtResource("3_stone")]
+position = Vector2(3140, 2070)
+
+[node name="SmallStone4" parent="Obstacles" unique_id=1885973947 instance=ExtResource("3_stone")]
+position = Vector2(3210, 1960)
+
+[node name="SmallStone5" parent="Obstacles" unique_id=789961710 instance=ExtResource("3_stone")]
+position = Vector2(2780, 2120)
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="ReturnToMenu" type="Button" parent="Interface"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 210.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 19
+text = "Вернуться в меню"
+
+[connection signal="pressed" from="Interface/ReturnToMenu" to="Ground" method="_on_return_to_menu_pressed"]
